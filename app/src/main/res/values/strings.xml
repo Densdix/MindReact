@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Mind React</string>
+    <string name="currentScore">x+y=?</string>
+    <string name="button_sescription">none</string>
+</resources>
