@@ -9,15 +9,15 @@ public class Calculation {
 
     public static ArrayList<Integer> calc(){
 
-        int firstNumber = 0;
-        int secondNumber = 0;
-        int operator = 0;
+        int firstNumber;
+        int secondNumber;
+        int operator;
 
         firstNumber = rn.nextInt(10)+1;
         secondNumber = rn.nextInt(10)+1;
-        operator = rn.nextInt(2)+1;
+        operator = rn.nextInt(3)+1;
 
-        return new ArrayList<Integer>(Arrays.asList(firstNumber,secondNumber,operator));
+        return new ArrayList<>(Arrays.asList(firstNumber, secondNumber, operator));
 
     }
 

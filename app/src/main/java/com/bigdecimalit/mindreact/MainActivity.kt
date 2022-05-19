@@ -36,24 +36,6 @@ class MainActivity() : AppCompatActivity() {
         resetButton?.setOnClickListener {
             setValues()
         }
-
-//        button?.setOnClickListener {
-//            //tempScore = counter?.text.toString().toInt()
-//
-//
-//            if(tempScore < 10) {
-//                counter?.text = (tempScore + 1).toString()
-//                if (tempScore + 1 >= 10)
-//                    Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show()
-//            }
-//            else {
-//                tempScore = 1
-//                counter?.text = tempScore.toString()
-//            }
-//
-//        }
-
-
         setValues()
 
 
@@ -62,51 +44,45 @@ class MainActivity() : AppCompatActivity() {
     fun rightChoice(){
         gameScore++
         counter?.text = gameScore.toString()
-        correctness?.text = "Right"
+        correctness?.text = getString(R.string.right_choice)
         correctness?.setTextColor(Color.GREEN)
         setValues()
     }
 
     fun choicePressed(view: View) {
-        if(view == findViewById(R.id.choice1) && view == correctButton) {
-            //Toast.makeText(this, "choice1! - Win", Toast.LENGTH_SHORT).show()
-            rightChoice()
-        }
-        else if(view == findViewById(R.id.choice2) && view == correctButton) {
-           // Toast.makeText(this, "choice2! - Win", Toast.LENGTH_SHORT).show()
-            rightChoice()
-        }
-        else if(view == findViewById(R.id.choice3) && view == correctButton) {
-            //Toast.makeText(this, "choice3! - Win", Toast.LENGTH_SHORT).show()
+        if(view == correctButton) {
             rightChoice()
         }
         else{
             setValues()
-            correctness?.text = "Wrong"
+            correctness?.text = getString(R.string.wrong_choice)
             correctness?.setTextColor(Color.RED)
         }
     }
 
-    fun setValues(){
-        var numbers: ArrayList<Int> = ArrayList(listOf(0,1,2))
+    private fun setValues(){
+        val numbers: ArrayList<Int> = ArrayList(listOf(0,1,2))
         numbers.shuffle()
-        var tempArray = Calculation.calc()
-        if(tempArray[2] == 1 ) {
-            formula?.text = "" + tempArray[0] + " + " + tempArray[1] + " = ?"
-            var correctAnswer = tempArray[0] + tempArray[1]
-            correctButton = buttonsList[numbers[0]]
-            buttonsList[numbers[0]].text = correctAnswer.toString()
-            buttonsList[numbers[1]].text = (correctAnswer + 1).toString()
-            buttonsList[numbers[2]].text = (correctAnswer - 1).toString()
+        val tempArray = Calculation.calc()
+        if(tempArray[2] == 1 ) init(tempArray[0], "+", tempArray[1])
+        else if (tempArray[2] == 2 ) init(tempArray[0], "-", tempArray[1])
+        else if (tempArray[2] == 3 ) init(tempArray[0], "*", tempArray[1])
+    }
 
+    private fun init(firstNum:Int, operator:String, secondNum:Int){
+        formula?.text = "$firstNum $operator $secondNum = ?"
+        val correctAnswer = when (operator){
+            "+" -> firstNum + secondNum
+            "-" -> firstNum - secondNum
+            "*" -> firstNum * secondNum
+            else -> 0
         }
-        else {
-            formula?.text = "" + tempArray[0] + " - " + tempArray[1] + " = ?"
-            var correctAnswer = tempArray[0] - tempArray[1]
-            correctButton = buttonsList[numbers[0]]
-            buttonsList[numbers[0]].text = correctAnswer.toString()
-            buttonsList[numbers[1]].text = (correctAnswer + 1).toString()
-            buttonsList[numbers[2]].text = (correctAnswer - 1).toString()
-        }
+        val numbers: ArrayList<Int> = ArrayList(listOf(0,1,2))
+        numbers.shuffle()
+
+        correctButton = buttonsList[numbers[0]]
+        buttonsList[numbers[0]].text = correctAnswer.toString()
+        buttonsList[numbers[1]].text = (correctAnswer + 1).toString()
+        buttonsList[numbers[2]].text = (correctAnswer - 1).toString()
     }
 }
