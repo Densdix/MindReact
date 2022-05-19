@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Calculation {
     private static final Random rn = new Random();
+    private static int hard = 0;
 
     public static ArrayList<Integer> calc(){
 
@@ -13,12 +14,15 @@ public class Calculation {
         int secondNumber;
         int operator;
 
-        firstNumber = rn.nextInt(10)+1;
-        secondNumber = rn.nextInt(10)+1;
+        firstNumber = rn.nextInt(10 + hard)+1;
+        secondNumber = rn.nextInt(10 + hard)+1;
         operator = rn.nextInt(3)+1;
 
         return new ArrayList<>(Arrays.asList(firstNumber, secondNumber, operator));
 
     }
 
+    public static void setHard(int hard) {
+        Calculation.hard = hard;
+    }
 }
