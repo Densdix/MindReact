@@ -2,4 +2,6 @@
     <string name="app_name">Mind React</string>
     <string name="currentScore">x+y=?</string>
     <string name="button_sescription">none</string>
+    <string name="right_choice">Right</string>
+    <string name="wrong_choice">Wrong</string>
 </resources>
