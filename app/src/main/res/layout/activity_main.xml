@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/bgr">
 
     <TextView
         android:id="@+id/current_formula"
@@ -17,47 +18,100 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/choice1"
-        android:layout_width="100dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="8dp"
-        android:onClick="choicePressed"
-        android:text="@string/button_sescription"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/current_formula" />
+    <TextView
+        android:id="@+id/previous_formula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/currentScore"
+        android:textColor="#00FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/choice2"
-        android:layout_width="100dp"
-        android:layout_height="75dp"
-        android:onClick="choicePressed"
-        android:text="@string/button_sescription"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/choice3"
-        app:layout_constraintStart_toEndOf="@+id/choice1"
-        app:layout_constraintTop_toBottomOf="@+id/current_formula" />
-
-    <Button
-        android:id="@+id/choice3"
-        android:layout_width="100dp"
-        android:layout_height="75dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="choicePressed"
-        android:text="@string/button_sescription"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/current_formula" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <ImageView
-        android:id="@+id/reset"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/current_formula"
-        app:layout_constraintStart_toEndOf="@+id/current_formula"
-        app:layout_constraintTop_toTopOf="@+id/current_formula"
-        app:srcCompat="@android:drawable/ic_delete" />
+        <LinearLayout
+            android:id="@+id/first_choice_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/choice1"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:onClick="choicePressed"
+                android:text="@string/button_sescription" />
+
+            <Button
+                android:id="@+id/choice2"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:onClick="choicePressed"
+                android:text="@string/button_sescription" />
+
+            <Button
+                android:id="@+id/choice3"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:onClick="choicePressed"
+                android:text="@string/button_sescription" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/second_choice_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/choice4"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:onClick="choicePressed"
+                android:text="@string/button_sescription" />
+
+            <Button
+                android:id="@+id/choice5"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:onClick="choicePressed"
+                android:text="@string/button_sescription" />
+
+            <Button
+                android:id="@+id/choice6"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:onClick="choicePressed"
+                android:text="@string/button_sescription" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/game_score"
@@ -69,18 +123,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/correctness"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="correctness"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choice2" />
 
     <SeekBar
         android:id="@+id/seekBar"

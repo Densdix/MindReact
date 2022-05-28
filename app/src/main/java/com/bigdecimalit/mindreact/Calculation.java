@@ -14,8 +14,8 @@ public class Calculation {
         int secondNumber;
         int operator;
 
-        firstNumber = rn.nextInt(10 + hard)+1;
-        secondNumber = rn.nextInt(10 + hard)+1;
+        firstNumber = rn.nextInt(10 + hard)+(1+hard);
+        secondNumber = rn.nextInt(10 + hard)+(1+hard);
         operator = rn.nextInt(3)+1;
 
         return new ArrayList<>(Arrays.asList(firstNumber, secondNumber, operator));
